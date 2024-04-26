@@ -5,6 +5,6 @@
     $host = "localhost";
     $bd = "mysql";
     $dbname = "sondage";
-    $user = "root";
-    $password = "yazoDB";
+    $user = ""; //your user_name;
+    $password = ""; //your_password
 ?>

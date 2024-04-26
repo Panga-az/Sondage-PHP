@@ -61,7 +61,6 @@ $canvas_ids = ["myChart1", "myChart2", "myChart3"];
             plot("myChart3", "polarArea", values, nb_reponse);
         </script>
 
-
 </body>
 <?php require_once (__DIR__ . "/include/footer.php") ?>
 

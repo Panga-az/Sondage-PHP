@@ -13,7 +13,7 @@ if (isset($_GET["id"])) {
     $_statement->execute([
         "id" => $_SESSION["modify_id"]
     ]);
-    $question = $_statement->fetch(PDO::FETCH_ASSOC); 
+    $question = $_statement->fetch(PDO::FETCH_ASSOC);
 
     //requete pour selectionner toutes les reponses associer à la question grace à l'id de la question.
     $_stat->execute([
@@ -39,24 +39,34 @@ if (isset($_GET["id"])) {
         Bienvenue dans la page de Modification.
 
         <div class="container">
+
             <form action="updated.php" method="post">
+
                 <?php if (isset($_SESSION["modify_sondage_error"])): ?>
                     <div class="alert alert-danger" role="alert">
                         <?php echo $_SESSION["modify_sondage_error"]; ?>
                     </div>
                     <?php unset($_SESSION["modify_sondage_error"]); ?>
+                    
                 <?php elseif (isset($_SESSION["modified_success"])): ?>
                     <div class="alert alert-success" role="alert">
                         <?php echo $_SESSION["modified_success"]; ?>
                     </div>
                     <?php unset($_SESSION["modified_success"]); ?>
+
+                    <?php if (isset($_SESSION["question_error"])): ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo $_SESSION["question_error"]; ?>
+                        </div>
+                        <?php unset($_SESSION["question_error"]); ?>
+                    <?php endif; ?>
+
                 <?php endif; ?>
 
                 <div class="mb-3">
                     <label for="question" class="form-label">Question</label>
                     <input type="text" class="form-control" id="question" name="question"
-                        aria-describedby="question-help"
-                        value="<?php echo htmlspecialchars($question['question']); ?>">
+                        aria-describedby="question-help" value="<?php echo htmlspecialchars($question['question']); ?>">
                     <div id="question-help" class="form-text">La question à modifier.</div>
                 </div>
 
@@ -72,4 +82,5 @@ if (isset($_GET["id"])) {
     </div>
 </body>
 <?php require_once (__DIR__ . "/include/footer.php") ?>
+
 </html>

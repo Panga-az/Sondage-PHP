@@ -9,8 +9,6 @@ $post = $_POST;
 
 if (isset($post["email"]) && isset($post["pswd"]) && isset($post["name"])) {
 
-
-
     if (!filter_var($post["email"], FILTER_VALIDATE_EMAIL)) {
         $_SESSION["error"] = "EMAIL invalide";
     } else {

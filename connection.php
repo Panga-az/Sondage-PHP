@@ -11,6 +11,7 @@ if (isset($post["email"]) && isset($post["pswd"])) {
         $_SESSION["error"] = "EMAIL invalide";
     } else {
 
+        
         if (in_array($post["email"], $mails) && (in_array($post["pswd"], $passwords))) {
 
             $_SESSION["connected"] = "connected";
@@ -31,8 +32,6 @@ if (isset($post["email"]) && isset($post["pswd"])) {
         else
         {
             $_SESSION["error"] = "Email ou Mot de passe incorrect."; 
-            $_SESSION["mail"] = $post["email"];
-            
             header("Location: index.php");
             exit();
         }

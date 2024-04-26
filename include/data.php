@@ -41,9 +41,10 @@ $names =  $my_connection->prepare("SELECT full_name FROM users WHERE email= :mai
 
 $users = $ad_groups->fetchAll(PDO::FETCH_ASSOC);
 
-$mails = array_column($users, "email");
-$passwords = array_column($users, "`pswd");
 
+
+$mails = array_column($users, "email");
+$passwords = array_column($users, "pswd");
 
 //$insert_users = $my_connection->prepare("INSERT INTO users(full_name, email, pswd) VALUES(:full_name, :email, :pswd");
 

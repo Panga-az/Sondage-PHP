@@ -34,6 +34,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ]);
         }
 
+        //verifier si la question à ajouter existe dèjà.
+        $check_question = $my_connection->prepare("SELECT question FROM table_sondage_questions WHERE question= :question");
+        $check_question->execute([
+            "question" => $question_modify
+        ]);
+        if($check_question->fetch())
+        {
+            $_SESSION["question_error"] = "Cette question existe dejà choisissez un autre ou allez-y modifier la question pour l'adapter à vos besoin.";
+            header("Location: sondage_update.php");
+            exit();
+        }
+
+
         $update_question->execute([
             "question_modify" => $question_modify,
             "id" => $_SESSION["modify_id"]
